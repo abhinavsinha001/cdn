@@ -11,13 +11,13 @@ function fetchAsyncSignals(mode) {
         switch (mode) {
         case 1:
           var eids=""
-          if(pbjs && pbjs.getUserIdsAsEids && typeof pbjs.getUserIdsAsEids === "function")){
+          if(pbjs && pbjs.getUserIdsAsEids && typeof pbjs.getUserIdsAsEids === "function"){
             eids=pbjs.getUserIdsAsEids();
           }
           break;
         case 2:
           var eids=""
-          if(owpbjs && owpbjs.getUserIdsAsEids && typeof owpbjs.getUserIdsAsEids === "function")){
+          if(owpbjs && owpbjs.getUserIdsAsEids && typeof owpbjs.getUserIdsAsEids === "function"){
             eids=owpbjs.getUserIdsAsEids();
           }
           let signals= new Signals(JSON.stringify(eids)) // Get IDs from PubMatic Identity Hub
