@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<VAST version="3.0">
+  <Ad id="1000" sequence="1">
+    <Wrapper>
+      <AdSystem><![CDATA[AdGear RTB]]></AdSystem>
+      <VASTAdTagURI><![CDATA[https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%203.0%20Samples/Inline_Linear_Tag-test.xml]]></VASTAdTagURI>
+      <Creatives>
+        <Creative>
+          <Linear>
+            <TrackingEvents>
+              <Tracking event="creativeView"><![CDATA[https://mytest.com?e=1]]></Tracking>
+              <Tracking event="start"><![CDATA[https://mytest.com?e=2]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[https://mytest.com?e=3]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[https://mytest.com?e=4]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[https://mytest.com?e=5]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://mytest.com?e=6]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickTracking><![CDATA[https://mytest.com?e=99]]></ClickTracking>
+            </VideoClicks>
+          </Linear>
+        </Creative>
+      </Creatives>
+    </Wrapper>
+  </Ad>
+  <Ad id="2000" sequence="2">
+    <Wrapper>
+      <AdSystem><![CDATA[AdGear RTB]]></AdSystem>
+      <VASTAdTagURI><![CDATA[https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%203.0%20Samples/Inline_Linear_Tag-test.xml]]></VASTAdTagURI>
+      <Creatives>
+        <Creative>
+          <Linear>
+            <TrackingEvents>
+              <Tracking event="creativeView"><![CDATA[https://mytest.com?e=7]]></Tracking>
+              <Tracking event="start"><![CDATA[https://mytest.com?e=8]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[https://mytest.com?e=9]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[https://mytest.com?e=10]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[https://mytest.com?e=11]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://mytest.com?e=12]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickTracking><![CDATA[https://mytest.com?e=100]]></ClickTracking>
+            </VideoClicks>
+          </Linear>
+        </Creative>
+      </Creatives>
+    </Wrapper>
+  </Ad>
+</VAST>
