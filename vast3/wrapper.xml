@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<VAST version="3.0">
+  <Ad id="1" sequence="1">
+    <Wrapper>
+      <AdSystem><![CDATA[AdGear RTB]]></AdSystem>
+      <VASTAdTagURI><![CDATA[https://cdn.jsdelivr.net/gh/abhinavsinha001/cdn@vast-test/vast3/adpod.xml]]></VASTAdTagURI>
+      <Creatives>
+        <Creative>
+          <Linear>
+            <TrackingEvents>
+              <Tracking event="creativeView"><![CDATA[https://mywrappertracking.com?e=1]]></Tracking>
+              <Tracking event="start"><![CDATA[https://mywrappertracking.com?e=2]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[https://mywrappertracking.com?e=3]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[https://mywrappertracking.com?e=4]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[https://mywrappertracking.com?e=5]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://mywrappertracking.com?e=6]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickTracking><![CDATA[https://mywrappertracking.com?e=99]]></ClickTracking>
+            </VideoClicks>
+          </Linear>
+        </Creative>
+      </Creatives>
+    </Wrapper>
+  </Ad>
+</VAST>
