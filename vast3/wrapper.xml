@@ -3,7 +3,7 @@
   <Ad id="1" sequence="1">
     <Wrapper>
       <AdSystem><![CDATA[AdGear RTB]]></AdSystem>
-      <VASTAdTagURI><![CDATA[https://cdn.jsdelivr.net/gh/abhinavsinha001/cdn@vast-test/vast3/adpod.xml]]></VASTAdTagURI>
+      <VASTAdTagURI><![CDATA[https://cdn.jsdelivr.net/gh/abhinavsinha001/cdn@master/vast3/adpod.xml]]></VASTAdTagURI>
       <Creatives>
         <Creative>
           <Linear>
