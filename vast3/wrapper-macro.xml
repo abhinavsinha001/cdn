@@ -8,15 +8,15 @@
         <Creative>
           <Linear>
             <TrackingEvents>
-              <Tracking event="creativeView"><![CDATA[https://mywrappertracking.com?e=1&cb=[CACHEBUSTING]&au=[ASSETURI]]]></Tracking>
-              <Tracking event="start"><![CDATA[https://mywrappertracking.com?e=2&cb=[CACHEBUSTING]&au=[ASSETURI]]]></Tracking>
-              <Tracking event="midpoint"><![CDATA[https://mywrappertracking.com?e=3&cb=[CACHEBUSTING]&au=[ASSETURI]]]></Tracking>
-              <Tracking event="firstQuartile"><![CDATA[https://mywrappertracking.com?e=4&cb=[CACHEBUSTING]&au=[ASSETURI]]]></Tracking>
-              <Tracking event="thirdQuartile"><![CDATA[https://mywrappertracking.com?e=5&cb=[CACHEBUSTING]&au=[ASSETURI]]]></Tracking>
-              <Tracking event="complete"><![CDATA[https://mywrappertracking.com?e=6&cb=[CACHEBUSTING]&au=[ASSETURI]]]></Tracking>
+              <Tracking event="creativeView"><![CDATA[https://mywrappertracking.com?e=1&cb=[CACHEBUSTING]]]></Tracking>
+              <Tracking event="start"><![CDATA[https://mywrappertracking.com?e=2&cb=[CACHEBUSTING]]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[https://mywrappertracking.com?e=3&cb=[CACHEBUSTING]]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[https://mywrappertracking.com?e=4&cb=[CACHEBUSTING]]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[https://mywrappertracking.com?e=5&cb=[CACHEBUSTING]]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://mywrappertracking.com?e=6&cb=[CACHEBUSTING]]]></Tracking>
             </TrackingEvents>
             <VideoClicks>
-              <ClickTracking><![CDATA[https://mywrappertracking.com?e=99&cb=[CACHEBUSTING]&au=[ASSETURI]]]></ClickTracking>
+              <ClickTracking><![CDATA[https://mywrappertracking.com?e=99&cb=[CACHEBUSTING]]]></ClickTracking>
             </VideoClicks>
           </Linear>
         </Creative>
