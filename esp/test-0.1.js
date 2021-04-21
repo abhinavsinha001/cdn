@@ -16,7 +16,11 @@ function fetchAsyncSignals(mode) {
           eids="Hello eids"; // Demo data
          
       }
-      signals= btoa(JSON.stringify(eids))
+      signals= encryptSignals(JSON.stringify({"eids":pbjs.getUserIdsAsEids()}))
       promise = Promise.resolve(signals);       
       return promise;
+};
+
+function encryptSignals(signals){
+    return btoa(signals); // Test encryption. To be replaced with better algo
 };
