@@ -18,6 +18,7 @@ function fetchAsyncSignals(mode) {
       }
       signals= encryptSignals(JSON.stringify({"eids":eids}))
       promise = Promise.resolve(signals);       
+      console.log("fetching Signals: "+signals);
       return promise;
 };
 
