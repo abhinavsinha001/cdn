@@ -1,4 +1,5 @@
 function fetchAsyncSignals(mode) {
+        console.log("Going to fetch Signals");
         switch (mode) {
         case 1:
           var eids=""
