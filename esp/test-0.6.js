@@ -1,4 +1,4 @@
-function fetchAsyncSignals(mode, key, customFunction) {
+function fetchAsyncSignals(mode,customFunction,customKey) {
     console.log("Going to fetch signals");
     var eids = "";
     switch (mode) {
@@ -23,8 +23,8 @@ function fetchAsyncSignals(mode, key, customFunction) {
 
     }
     var dataKey = "eids" // Default key is eids
-    if (key && key.length > 0) {
-        dataKey = key; // Using custom key for data if passed  
+    if (customKey && customKey.length > 0) {
+        dataKey = customKey; // Using custom key for data if passed  
     }
     signals = encryptSignals(JSON.stringify({
         dataKey: eids
