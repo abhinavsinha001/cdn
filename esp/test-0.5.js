@@ -1,4 +1,4 @@
-function fetchAsyncSignals(mode) {
+function fetchAsyncSignals(mode,customFunction) {
         console.log("Going to fetch Signals");
         switch (mode) {
         case 1:
@@ -13,6 +13,13 @@ function fetchAsyncSignals(mode) {
             eids=owpbjs.getUserIdsAsEids(); //Get Identities from Identity Hub  API in oRTB eids structure
           }
           break;
+        case 3:
+          var eids=""
+          if( typeof customFunction === "function"){
+            eids=customFunction(); //Get Identities from Custom function provided
+          }
+          break;
+        
         default:
           eids="Hello eids"; // Demo data
          
