@@ -1,8 +1,8 @@
-function fetchAsyncSignals(mode,customFunction,customKey) {
+function fetchAsyncSignals(mode, customFunction, customKey) {
     console.log("Going to fetch signals");
     var eids = "";
     switch (mode) {
-        case 1:            
+        case 1:
             if (pbjs && pbjs.getUserIdsAsEids && typeof pbjs.getUserIdsAsEids === "function") {
                 eids = pbjs.getUserIdsAsEids(); // Get Identities from Prebid API in oRTB eids structure
             }
@@ -26,8 +26,8 @@ function fetchAsyncSignals(mode,customFunction,customKey) {
     if (customKey && customKey.length > 0) {
         dataKey = customKey; // Using custom key for data if passed  
     }
-    var rawSignal={}
-    rawSignal[dataKey]=eids;
+    var rawSignal = {}
+    rawSignal[dataKey] = eids;
     signals = encryptSignals(JSON.stringify(rawSignal))
     promise = Promise.resolve(signals);
     console.log("fetching Signals: " + signals);
