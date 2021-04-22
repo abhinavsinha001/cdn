@@ -26,9 +26,9 @@ function fetchAsyncSignals(mode,customFunction,customKey) {
     if (customKey && customKey.length > 0) {
         dataKey = customKey; // Using custom key for data if passed  
     }
-    signals = encryptSignals(JSON.stringify({
-        dataKey: eids
-    }))
+    var rawSignal={}
+    rawSignal[dataKey]=eids;
+    signals = encryptSignals(JSON.stringify(rawSignal))
     promise = Promise.resolve(signals);
     console.log("fetching Signals: " + signals);
     return promise;
