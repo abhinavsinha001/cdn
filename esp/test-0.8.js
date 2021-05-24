@@ -19,17 +19,22 @@ function fetchAsyncSignals(mode, customFunction, customKey) {
             break;
 
         default:
-            eids = "Hello eids"; // Demo data
+            eids = JSON.parse('{"source":"pubmatic","uids":[{"id":"hello-eids","atype":1}]}'); // Demo data
 
     }
-    var dataKey = "eids" // Default key is eids
+    /*var dataKey = "eids" // Default key is eids
     if (customKey && customKey.length > 0) {
         dataKey = customKey; // Using custom key for data if passed  
     }
     var rawSignal = {}
     rawSignal[dataKey] = eids;
-    signals = encryptSignals(JSON.stringify(rawSignal))
-    promise = Promise.resolve(signals);
+    signals = encryptSignals(JSON.stringify(rawSignal))*/
+    var eidsSignal = eids.map(function (eid) {
+      signal={};
+      signal[eid.source]=eid.uids[0].id
+      return signal;
+    });
+    promise = Promise.resolve(eidsSignal);
     console.log("fetching Signals: " + signals);
     return promise;
 };
