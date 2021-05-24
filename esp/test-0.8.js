@@ -1,5 +1,5 @@
-function fetchAsyncSignals(mode, customFunction, customKey) {
-    console.log("Going to fetch signals");
+function fetchAsyncSignals(mode,source, customFunction, customKey) {
+    console.log("Going to fetch signals for mode: "+mode+" & source: "+source);
     var eids = "";
     switch (mode) {
         case 1:
@@ -22,19 +22,13 @@ function fetchAsyncSignals(mode, customFunction, customKey) {
             eids = JSON.parse('{"source":"pubmatic","uids":[{"id":"hello-eids","atype":1}]}'); // Demo data
 
     }
-    /*var dataKey = "eids" // Default key is eids
-    if (customKey && customKey.length > 0) {
-        dataKey = customKey; // Using custom key for data if passed  
-    }
-    var rawSignal = {}
-    rawSignal[dataKey] = eids;
-    signals = encryptSignals(JSON.stringify(rawSignal))*/
-    var eidsSignal ={} ;
+
+    var eidsSignals ={} ;
     eids.forEach(function (eid) {
-      eidsSignal[eid.source] = eid.uids[0].id;
+      eidsSignals[eid.source] = eid.uids[0].id;
     });
-    promise = Promise.resolve(eidsSignal);
-    console.log("fetching Signals: " + signals);
+    promise = Promise.resolve(eidsSignals[source]);
+    console.log("fetching Signal: " + eidsSignals[source]);
     return promise;
 };
 
