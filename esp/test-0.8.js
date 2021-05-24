@@ -29,10 +29,9 @@ function fetchAsyncSignals(mode, customFunction, customKey) {
     var rawSignal = {}
     rawSignal[dataKey] = eids;
     signals = encryptSignals(JSON.stringify(rawSignal))*/
-    var eidsSignal = eids.map(function (eid) {
-      signal={};
-      signal[eid.source]=eid.uids[0].id
-      return signal;
+    var eidsSignal ={} ;
+    eids.forEach(function (eid) {
+      eidsSignal[eid.source] = eid.uids[0].id;
     });
     promise = Promise.resolve(eidsSignal);
     console.log("fetching Signals: " + signals);
