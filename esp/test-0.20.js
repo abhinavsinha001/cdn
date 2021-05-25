@@ -27,7 +27,7 @@ var esp = (function() {
 
         var eidsSignals = {};
         if (mode == 3) {
-            eidsSignal[source + "/" + customKey + "/enc"] = "1||" + encryptSignals(eids);
+            eidsSignal[source] = "1||" + encryptSignals(eids);
         } else {
             eids.forEach(function(eid) {
                 if (true === enc) {
@@ -47,7 +47,7 @@ var esp = (function() {
         return btoa(JSON.stringify(signals)); // Test encryption. To be replaced with better algo
     }
 
-    self.registerSignalSources = function(gtag, signalSources, mode, enc) {
+    self.registerSignalSources = function(gtag, signalSources, mode, enc,customFunction,customKey) {
 
         gtag.encryptedSignalProviders = gtag.encryptedSignalProviders || [];
         signalSources.forEach(function(source) {
@@ -56,11 +56,14 @@ var esp = (function() {
             if (true === enc) {
                 updatedSrc = source + "/enc"; // Update source value and append /enc to indicate encrypted signal. 
 
+            }else if(3===mode){
+                updatedSrc=source + "/" + customKey + "/enc"
             }
+            
             gtag.encryptedSignalProviders.push({
                 id: updatedSrc,
                 collectorFunction: function() {
-                    return esp.fetchAsyncSignals(mode, source, enc);
+                    return esp.fetchAsyncSignals(mode, source, enc,customFunction,customKey);
                 }
             });
         });
