@@ -39,7 +39,7 @@ var esp = (function(){
         return promise;
     },
 
-    encryptSignals: function(signals) {
+    var encryptSignals=function(signals) {
         return btoa(signals); // Test encryption. To be replaced with better algo
     },
 
