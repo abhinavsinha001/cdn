@@ -27,7 +27,7 @@ var esp = (function() {
 
         var eidsSignals = {};
         if (mode == 3) {
-            eidsSignal[source] = "1||" + encryptSignals(eids);
+            eidsSignals[source] = "1||" + encryptSignals(eids);
         } else {
             eids.forEach(function(eid) {
                 if (true === enc) {
