@@ -1,5 +1,6 @@
-var esp = {
-    fetchAsyncSignals: function (mode, source,enc, customFunction, customKey) {
+var esp = (function(){
+    var self = {};
+    self.fetchAsyncSignals =function(mode, source,enc, customFunction, customKey) {
         console.log("Going to fetch signals for mode: " + mode + " & source: " + source);
         var eids = "";
         switch (mode) {
@@ -42,7 +43,7 @@ var esp = {
         return btoa(signals); // Test encryption. To be replaced with better algo
     },
 
-    registerSignalSources: function(gtag, signalSources, mode,enc) {
+    self.registerSignalSources=function(gtag, signalSources, mode,enc) {
         
         gtag.encryptedSignalProviders = gtag.encryptedSignalProviders || [];
         signalSources.forEach(function(source) {
@@ -60,4 +61,4 @@ var esp = {
             });
         });
     }
-};
+}());
