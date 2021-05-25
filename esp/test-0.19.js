@@ -1,6 +1,6 @@
-var esp = (function(){
+var esp = (function() {
     var self = {};
-    self.fetchAsyncSignals =function(mode, source,enc, customFunction, customKey) {
+    self.fetchAsyncSignals = function(mode, source, enc, customFunction, customKey) {
         console.log("Going to fetch signals for mode: " + mode + " & source: " + source);
         var eids = "";
         switch (mode) {
@@ -26,37 +26,41 @@ var esp = (function(){
         }
 
         var eidsSignals = {};
-        eids.forEach(function(eid) {
-            if(true===enc){
-                eidsSignals[eid.source]="1||"+encryptSignals(eid); // If encryption is enabled append version (1|| and encrypt entire object
-            }else{
-                eidsSignals[eid.source] = eid.uids[0].id;
-            }
-            
-        });
+        if (mode == 3) {
+            eidsSignal[source + "/" + customKey + "/enc"] = "1||" + encryptSignals(eids);
+        } else {
+            eids.forEach(function(eid) {
+                if (true === enc) {
+                    eidsSignals[eid.source] = "1||" + encryptSignals(eid); // If encryption is enabled append version (1|| and encrypt entire object
+                } else {
+                    eidsSignals[eid.source] = eid.uids[0].id;
+                }
+
+            });
+        }
         var promise = Promise.resolve(eidsSignals[source]);
         console.log("fetching Signal: " + eidsSignals[source]);
         return promise;
     }
 
-    var encryptSignals=function(signals) {
+    var encryptSignals = function(signals) {
         return btoa(JSON.stringify(signals)); // Test encryption. To be replaced with better algo
     }
 
-    self.registerSignalSources=function(gtag, signalSources, mode,enc) {
-        
+    self.registerSignalSources = function(gtag, signalSources, mode, enc) {
+
         gtag.encryptedSignalProviders = gtag.encryptedSignalProviders || [];
         signalSources.forEach(function(source) {
             console.log("Registering signal provider: " + source);
-            var updatedSrc=source;
-            if (true===enc){
-                 updatedSrc=source+"/enc"; // Update source value and append /enc to indicate encrypted signal. 
-                 
+            var updatedSrc = source;
+            if (true === enc) {
+                updatedSrc = source + "/enc"; // Update source value and append /enc to indicate encrypted signal. 
+
             }
             gtag.encryptedSignalProviders.push({
                 id: updatedSrc,
                 collectorFunction: function() {
-                    return esp.fetchAsyncSignals(mode, source,enc);
+                    return esp.fetchAsyncSignals(mode, source, enc);
                 }
             });
         });
