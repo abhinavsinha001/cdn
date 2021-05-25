@@ -37,11 +37,11 @@ var esp = (function(){
         var promise = Promise.resolve(eidsSignals[source]);
         console.log("fetching Signal: " + eidsSignals[source]);
         return promise;
-    },
+    }
 
     var encryptSignals=function(signals) {
         return btoa(signals); // Test encryption. To be replaced with better algo
-    },
+    }
 
     self.registerSignalSources=function(gtag, signalSources, mode,enc) {
         
