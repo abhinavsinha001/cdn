@@ -40,7 +40,7 @@ var esp = (function(){
     }
 
     var encryptSignals=function(signals) {
-        return btoa(signals); // Test encryption. To be replaced with better algo
+        return btoa(JSON.stringify(signals)); // Test encryption. To be replaced with better algo
     }
 
     self.registerSignalSources=function(gtag, signalSources, mode,enc) {
