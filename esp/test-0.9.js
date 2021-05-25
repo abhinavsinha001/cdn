@@ -4,12 +4,12 @@ var esp = {
         var eids = "";
         switch (mode) {
             case 1:
-                if (pbjs && pbjs.getUserIdsAsEids && typeof pbjs.getUserIdsAsEids === "function") {
+                if (typeof pbjs !== "undefined" && typeof pbjs.getUserIdsAsEids === "function") {
                     eids = pbjs.getUserIdsAsEids(); // Get Identities from Prebid API in oRTB eids structure
                 }
                 break;
             case 2:
-                if (owpbjs && owpbjs.getUserIdsAsEids && typeof owpbjs.getUserIdsAsEids === "function") {
+                if (typeof owpbjs !== "undefined" && typeof owpbjs.getUserIdsAsEids === "function") {
                     eids = owpbjs.getUserIdsAsEids(); //Get Identities from Identity Hub  API in oRTB eids structure
                 }
                 break;
@@ -33,7 +33,7 @@ var esp = {
             }
             
         });
-        promise = Promise.resolve(eidsSignals[source]);
+        var promise = Promise.resolve(eidsSignals[source]);
         console.log("fetching Signal: " + eidsSignals[source]);
         return promise;
     };
@@ -47,13 +47,13 @@ var esp = {
         gtag.encryptedSignalProviders = gtag.encryptedSignalProviders || [];
         signalSources.forEach(function(source) {
             console.log("Registering signal provider: " + source);
-            var updatedSrc=source
+            var updatedSrc=source;
             if (true===enc){
                  updatedSrc=source+"/enc"; // Update source value and append /enc to indicate encrypted signal. 
                  
             }
             gtag.encryptedSignalProviders.push({
-                id: source,
+                id: updatedSrc,
                 collectorFunction: function() {
                     return fetchAsyncSignals(mode, source,enc);
                 }
