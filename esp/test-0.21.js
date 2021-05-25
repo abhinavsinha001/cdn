@@ -56,7 +56,8 @@ var esp = (function() {
             if (true === enc) {
                 updatedSrc = source + "/enc"; // Update source value and append /enc to indicate encrypted signal. 
 
-            }else if(3===mode){
+            }
+            if(3===mode){
                 updatedSrc=source + "/" + customKey + "/enc"
             }
             
