@@ -61,4 +61,5 @@ var esp = (function(){
             });
         });
     }
+    return self;
 }());
