@@ -56,7 +56,7 @@ var esp = (function(){
             gtag.encryptedSignalProviders.push({
                 id: updatedSrc,
                 collectorFunction: function() {
-                    return fetchAsyncSignals(mode, source,enc);
+                    return esp.fetchAsyncSignals(mode, source,enc);
                 }
             });
         });
