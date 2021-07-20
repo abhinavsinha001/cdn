@@ -18,14 +18,14 @@ var esp = (function() {
     var hasOwnProperty = Object.prototype.hasOwnProperty;
 
     // helper function which reverses the sense of predicate result
-    function not(func) {
+    function esp.is.not(func) {
         return function() {
             return !func.apply(null, slice.call(arguments));
         };
     }
 
     // helper function which call predicate function per parameter and return true if all pass
-    function all(func) {
+    function esp.is.all(func) {
         return function() {
             var params = getParams(arguments);
             var length = params.length;
@@ -39,7 +39,7 @@ var esp = (function() {
     }
 
     // helper function which call predicate function per parameter and return true if any pass
-    function any(func) {
+    function esp.is.any(func) {
         return function() {
             var params = getParams(arguments);
             var length = params.length;
