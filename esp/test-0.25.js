@@ -307,7 +307,7 @@ var esp = (function() {
     esp.is.windowsTablet.api = ['not'];
     
     function setInterfaces() {
-        var options = is;
+        var options = esp.is;
         for (var option in options) {
             if (hasOwnProperty.call(options, option) && is['function'](options[option])) {
                 var interfaces = options[option].api || ['not', 'all', 'any'];
