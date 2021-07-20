@@ -223,7 +223,7 @@ var esp = (function() {
     esp.is.mobile.api = ['not'];
 
     // is current state offline?
-    esp.is.offline = not(is.online);
+    esp.is.offline = not(esp.is.online);
     // offline method does not support 'all' and 'any' interfaces
     esp.is.offline.api = ['not'];
 
