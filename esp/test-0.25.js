@@ -7,6 +7,11 @@ var esp = (function() {
     esp.is.not = {};
     esp.is.all = {};
     esp.is.any = {};
+    // is a given value window?
+    // setInterval method is only available for window object
+    esp.is.windowObject = function(value) {
+        return value != null && typeof value === 'object' && 'setInterval' in value;
+    };
     // Environment checks
     /* -------------------------------------------------------------------------- */
 
