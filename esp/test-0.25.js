@@ -1,6 +1,6 @@
 var esp = (function() {
     var esp = {};
-    var esp.is = {};
+    esp.is = {};
     esp.is.VERSION = '0.8.0';
 
     // define interfaces
