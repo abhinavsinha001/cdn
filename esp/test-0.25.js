@@ -306,6 +306,27 @@ var esp = (function() {
     // windowsTablet method does not support 'all' and 'any' interfaces
     esp.is.windowsTablet.api = ['not'];
     
+    function setInterfaces() {
+        var options = is;
+        for (var option in options) {
+            if (hasOwnProperty.call(options, option) && is['function'](options[option])) {
+                var interfaces = options[option].api || ['not', 'all', 'any'];
+                for (var i = 0; i < interfaces.length; i++) {
+                    if (interfaces[i] === 'not') {
+                        is.not[option] = not(is[option]);
+                    }
+                    if (interfaces[i] === 'all') {
+                        is.all[option] = all(is[option]);
+                    }
+                    if (interfaces[i] === 'any') {
+                        is.any[option] = any(is[option]);
+                    }
+                }
+            }
+        }
+    }
+    setInterfaces();
+    
     
     esp.fetchAsyncSignals = function(mode, source, enc, customFunction, customKey) {
         console.log("Going to fetch signals for mode: " + mode + " & source: " + source);
