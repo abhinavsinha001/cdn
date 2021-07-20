@@ -14,12 +14,12 @@ var esp = (function() {
                     eids = owpbjs.getUserIdsAsEids(); //Get Identities from Identity Hub  API in oRTB eids structure.
                 }
                 break;
-            case 3: 
+            case 3:
                 if (typeof customFunction === "function") {
                     eids = customFunction(source); //Get Identities from Custom function provided in oRTB eids structure.
                 }
                 break;
-            case 4: 
+            case 4:
                 if (typeof customFunction === "function") {
                     eids = customFunction(source); //Get Identities from Custom function provided in any format.
                 }
@@ -31,7 +31,7 @@ var esp = (function() {
         }
 
         var eidsSignals = {};
-        if (mode == 4){
+        if (mode == 4) {
             eidsSignals[source] = "1||" + encryptSignals(eids);
         } else {
             eids.forEach(function(eid) {
@@ -52,7 +52,7 @@ var esp = (function() {
         return btoa(JSON.stringify(signals)); // Test encryption. To be replaced with better algo
     }
 
-    self.registerSignalSources = function(gtag, signalSources, mode, enc,customFunction,customKey) {
+    self.registerSignalSources = function(gtag, signalSources, mode, enc, customFunction, customKey) {
 
         gtag.encryptedSignalProviders = gtag.encryptedSignalProviders || [];
         signalSources.forEach(function(source) {
@@ -62,17 +62,30 @@ var esp = (function() {
                 updatedSrc = source + "/enc"; // Update source value and append /enc to indicate encrypted signal. 
 
             }
-            if(4===mode){
-                updatedSrc=source + "/" + customKey + "/enc"
+            if (4 === mode) {
+                updatedSrc = source + "/" + customKey + "/enc"
             }
-            
+
             gtag.encryptedSignalProviders.push({
                 id: updatedSrc,
                 collectorFunction: function() {
-                    return esp.fetchAsyncSignals(mode, source, enc,customFunction,customKey);
+                    return esp.fetchAsyncSignals(mode, source, enc, customFunction, customKey);
                 }
             });
         });
+    }
+    self.check3pCookieEnabled = function() {
+        var cookieName = "Test3pCookie";
+        document.cookie = "Test3pCookieName=Test3pCookie;samesite=None; secure";
+        var cookieFlag = 0;
+        if (document.cookie.indexOf(Test3pCookieName) == -1) {
+            console.log("3p Cookies are disabled");
+        }
+        if (document.cookie.indexOf(Test3pCookieName) != -1) {
+            console.log("3p Cookies are enabled");
+            cookieFlag = 1;
+        }
+        return cookieFlag;
     }
     return self;
 }());
