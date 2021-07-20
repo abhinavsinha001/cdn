@@ -12,6 +12,71 @@ var esp = (function() {
     esp.is.windowObject = function(value) {
         return value != null && typeof value === 'object' && 'setInterval' in value;
     };
+       // cache some methods to call later on
+    var toString = Object.prototype.toString;
+    var slice = Array.prototype.slice;
+    var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+    // helper function which reverses the sense of predicate result
+    function not(func) {
+        return function() {
+            return !func.apply(null, slice.call(arguments));
+        };
+    }
+
+    // helper function which call predicate function per parameter and return true if all pass
+    function all(func) {
+        return function() {
+            var params = getParams(arguments);
+            var length = params.length;
+            for (var i = 0; i < length; i++) {
+                if (!func.call(null, params[i])) {
+                    return false;
+                }
+            }
+            return true;
+        };
+    }
+
+    // helper function which call predicate function per parameter and return true if any pass
+    function any(func) {
+        return function() {
+            var params = getParams(arguments);
+            var length = params.length;
+            for (var i = 0; i < length; i++) {
+                if (func.call(null, params[i])) {
+                    return true;
+                }
+            }
+            return false;
+        };
+    }
+
+    // build a 'comparator' object for various comparison checks
+    var comparator = {
+        '<': function(a, b) { return a < b; },
+        '<=': function(a, b) { return a <= b; },
+        '>': function(a, b) { return a > b; },
+        '>=': function(a, b) { return a >= b; }
+    };
+
+    // helper function which compares a version to a range
+    function compareVersion(version, range) {
+        var string = (range + '');
+        var n = +(string.match(/\d+/) || NaN);
+        var op = string.match(/^[<>]=?|/)[0];
+        return comparator[op] ? comparator[op](version, n) : (version == n || n !== n);
+    }
+
+    // helper function which extracts params from arguments
+    function getParams(args) {
+        var params = slice.call(args);
+        var length = params.length;
+        if (length === 1 && is.array(params[0])) {    // support array
+            params = params[0];
+        }
+        return params;
+    }
     // Environment checks
     /* -------------------------------------------------------------------------- */
 
