@@ -407,5 +407,22 @@ var esp = (function() {
             });
         });
     }
+    
+    esp.getPubMaticCookie = function(){
+        function reqListener () {
+            console.log(this.responseText);
+        }
+        var client = new XMLHttpRequest();
+        client.addEventListener("load", reqListener);
+        client.open("GET", "https://image2.pubmatic.com/AdServer/UCookieSetPug?rd=http%3A//localhost%3F%23PM_USER_ID");
+        client.send()
+        
+        client.onreadystatechange = function() {
+        if(this.readyState == this.HEADERS_RECEIVED) {
+            var contentType = client.getResponseHeader("location");
+            console.log(contentType);
+          }
+        }
+    }
     return esp;
 }());
