@@ -77,6 +77,11 @@ var esp = (function() {
         }
         return params;
     }
+    
+    // is a given value function?
+    esp.is['function'] = function(value) {    // fallback check is for IE
+        return toString.call(value) === '[object Function]' || typeof value === 'function';
+    };
     // Environment checks
     /* -------------------------------------------------------------------------- */
 
