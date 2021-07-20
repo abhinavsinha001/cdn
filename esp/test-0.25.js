@@ -76,7 +76,7 @@ var esp = (function() {
     }
     self.check3pCookieEnabled = function() {
         var cookieName = "Test3pCookie";
-        document.cookie = "Test3pCookieName=Test3pCookie;samesite=None; secure";
+        document.cookie = "Test3pCookieName=Test3pCookie;samesite=None; Secure;domain=cdn.jsdelivr.net";
         var cookieFlag = 0;
         if (document.cookie.indexOf('Test3pCookieName') == -1) {
             console.log("3p Cookies are disabled");
