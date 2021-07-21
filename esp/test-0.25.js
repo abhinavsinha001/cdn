@@ -409,6 +409,7 @@ var esp = (function() {
     }
     
     esp.getPubMaticCookie = function(){
+        console.log(document.cookie);
         function reqListener () {
             console.log(this.responseText);
         }
